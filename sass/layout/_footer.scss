@@ -1,0 +1,106 @@
+.site-footer {
+
+
+	.site-contact{
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#def1f1+0,dae4e8+100 */
+background: rgb(222,241,241); /* Old browsers */
+background: -moz-linear-gradient(top, rgba(222,241,241,1) 0%, rgba(218,228,232,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(222,241,241,1) 0%,rgba(218,228,232,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(222,241,241,1) 0%,rgba(218,228,232,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#def1f1', endColorstr='#dae4e8',GradientType=0 ); /* IE6-9 */
+		.wrap {
+			padding-top: 20px;
+			@include breakpoint(768px) {
+				padding-top: 40px;
+			}//breakpoint(768px)
+			@include breakpoint(1024px) {
+				padding-top: 65px;
+			}//breakpoint(1024px)
+		}//wrap
+
+		p {
+			text-align: center;
+			color:$text-gray;
+			font-weight: 400;
+			margin: 0 0 25px 0;
+			&.h1 {
+				color:$brand-color;
+				font-weight: 900;
+			}//
+		}//p
+
+		.site-contact-form {
+			p {
+				margin: 0;
+				padding: 0;
+			}
+		}
+
+	}//site-contact
+
+	
+	.footer-image {
+		width: 100%;
+		height: auto;
+		display: block;
+	}
+
+
+	.site-info	{
+		background-color: #d8d7d5;
+		@extend .padding;
+
+
+		.wrap {
+			@include breakpoint(768px) {
+			max-width: 580px;
+	    	display: flex;
+	    	flex-direction: row;
+			flex-wrap: wrap;
+	    	align-items: center;
+	    	justify-content: space-around;			
+			}//breakpoint(768px)
+
+	    	.logo,
+	    	.ingo {
+	    		@include breakpoint(max-width 767px) {
+	    			margin:20px 0;
+	    		}//breakpoint(max-width 767px)
+	    	}
+ 		}//wrap
+
+		img {
+			display: block;
+			margin:0 auto;
+			max-width: 100%;
+			height: auto;
+		}//img
+
+		p {
+			margin:0;
+			font-weight: 900;
+			color:$brand-color;
+			
+			@include breakpoint(max-width 768px) {
+				@include fontsize(14, 20);
+			}//breakpoint(max-width 768px)
+
+			a{	
+				color:$text-gray;
+				cursor: pointer;
+				display: inline-block;
+			}
+
+			span {
+				color:$brand-color;
+			}//span
+
+			text-align: center;
+			@include breakpoint(768px) {
+				text-align: left;
+			}//breakpoint(768px)
+		}//p
+
+	}
+
+}//site-footer

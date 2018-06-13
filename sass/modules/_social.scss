@@ -1,0 +1,50 @@
+.social{
+	margin:0;
+	padding: 0;
+	list-style: none;
+	@include clearfix;
+	li{
+		margin:0;
+		padding: 0;
+		width: 40px;
+		height: 40px;
+		background-color:$white;
+		background-repeat: no-repeat;
+		background-position: center center;
+		&.fb{
+			background-image: url('../img/icons/fb.svg');
+			&:hover{
+				background-color: #3b5998;
+			}//hover
+		}//fb
+
+		&.twitter{
+			background-image: url('../img/icons/twitter.svg');
+			&:hover{
+				background-color: #55acee;
+			}//hover
+		}//twitter
+
+		&.gplus{
+			background-image: url('../img/icons/gplus.svg');
+			&:hover{
+				background-color: #dc4e41;
+			}//hover
+		}//gplus
+
+		&.linkedin{
+			background-image: url('../img/icons/linkedin.svg');
+			&:hover{
+				background-color: #0077b5;
+			}//hover
+		}//linkedin
+
+
+		a{
+			display: block;
+			width: 100%;
+			height: 100%;
+			cursor:pointer;
+		}
+	}//li
+}//socil

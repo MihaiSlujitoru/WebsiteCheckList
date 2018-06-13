@@ -1,0 +1,55 @@
+
+.pagination {
+	width: 100%;
+
+	.btn {
+		@include breakpoint(max-width 1023px) {
+			display: block;
+			margin: 0 auto;
+			max-width: 320px;
+		}
+	}
+
+	.btn-prev,
+	.btn-prev-no,
+	.btn-next,
+	.btn-next-no {
+		display: block;
+		width: 37px;
+		height: 37px;
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: contain;
+
+		@include breakpoint(768px) {
+			width: 74px;
+			height: 74px;		
+		}//breakpoint(768px)
+	}
+
+	.btn-prev{
+		background-image: url('../img/prev-link.png');	
+		float: left;
+		&:hover {
+			background-image: url('../img/prev-link-hover.png');	
+		}
+	}//btn-left
+
+
+	.btn-next{
+		background-image: url('../img/next-link.png');	
+		float: right;
+		&:hover {
+			background-image: url('../img/next-link-hover.png');	
+		}
+	}//btn-right
+
+	.btn-next-no {
+		background-image: url('../img/next-link-no.png')!important;	
+	}
+
+	.btn-prev-no {
+		background-image: url('../img/prev-link-no.png')!important;	
+	}
+
+}

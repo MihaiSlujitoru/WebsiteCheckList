@@ -1,0 +1,158 @@
+.single {
+	.site-content-blog {
+		@include breakpoint(1024px) {
+			/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+50,edeceb+50 */
+			background: rgb(255,255,255); /* Old browsers */
+			background: -moz-linear-gradient(left, rgba(255,255,255,1) 50%, rgba(237,236,235,1) 50%); /* FF3.6-15 */
+			background: -webkit-linear-gradient(left, rgba(255,255,255,1) 50%,rgba(237,236,235,1) 50%); /* Chrome10-25,Safari5.1-6 */
+			background: linear-gradient(to right, rgba(255,255,255,1) 50%,rgba(237,236,235,1) 50%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#edeceb',GradientType=1 ); /* IE6-9 */
+		}//breakpoint(1024px)	
+
+		.site-main-blog {
+			padding-top: 20px;
+			background-color: $white;
+			@include breakpoint(1024px) {
+				padding-top: 40px;
+			}
+		}
+
+		.post-content   {
+			padding-left: 0px;
+			padding-right: 0px;
+		}
+	}//site-content-blog
+}//single
+
+.blog,
+.archive,
+.categories,
+.error404 {
+	.site-content-blog {
+		@include breakpoint(1024px) {
+			/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#edeceb+50,ffffff+50 */
+			background: rgb(237,236,235); /* Old browsers */
+			background: -moz-linear-gradient(left, rgba(237,236,235,1) 50%, rgba(255,255,255,1) 50%); /* FF3.6-15 */
+			background: -webkit-linear-gradient(left, rgba(237,236,235,1) 50%,rgba(255,255,255,1) 50%); /* Chrome10-25,Safari5.1-6 */
+			background: linear-gradient(to right, rgba(237,236,235,1) 50%,rgba(255,255,255,1) 50%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#edeceb', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 */
+		}//breakpoint(1024px)	
+	}//site-content-blog
+}//single
+
+.site-content-blog {
+	.wrap-blog {
+		padding-left: 0;
+		padding-right: 0;
+		@include breakpoint(1024px) {
+			padding-left: 20px;
+			padding-right: 20px;
+		}//breakpoint(1024px)
+	}
+
+	.site-main-blog {
+		padding: 40px 20px;
+		background-color: $light-gray;
+
+		@include breakpoint(767px) {
+			display: flex;
+			flex-flow: row wrap;
+		}//breakpoint(767px)
+
+		@include breakpoint(1024px) {
+			padding: 65px 0;
+			@include span(9 of 12);
+			padding-left: 0;
+			padding-right: span(1 of 12);
+		}//breakpoint(1024px)
+
+		.wrap-blog-posts-non-sticky {
+			display: flex;
+			flex-direction:row;
+			flex-wrap: wrap;
+			justify-content: space-between;
+		}
+	}//site-main-blog
+}//site-content-blog
+
+article.blog-posts {
+	display: flex;
+	flex-direction: column;
+	
+	background-color: $white;
+	margin-bottom: 20px;
+	@include breakpoint(768px) {
+		margin-bottom: 40px;
+	}//breakpoint(768px)
+
+	&.blog-post-no-sticky {
+		@include breakpoint(768px) {
+			@include span(2 of 4)
+
+			&:nth-child(2n+2) {
+				@include last;	
+			}
+		}//breakpoint(768px)				
+	}
+
+	&.blog-post-sticky {
+		@include breakpoint(768px) {
+			@include span(12 of 12 inside no-gutters);
+			margin-right: 0;
+		}//breakpoint(768px)
+	}			
+
+	.blog-thumb {
+		width: 100%;
+		min-width: 100%;
+		img {
+			width: 100%;
+			height: auto;
+			display: block;
+		}//img
+	}//blog-thumb
+
+
+	.post-content {
+		width: 100%;
+		min-width: 100%;		
+		background-color: $white;
+		padding: 20px;
+	}
+
+	.post-meta {
+		color:$accent-color;
+		font-weight: 900;
+		text-transform: uppercase;
+		text-align: center;
+		margin: 0px 0 5px;
+		@include breakpoint(1024px) {
+			text-align: left;
+		}//breakpoint(1024px)
+		span {
+			color:$brand-color;
+		}
+	}//post-meta
+	h2.blog-title {
+		margin: 5px 0 5px;
+		text-align: center;
+		@include fontsize(18,24);
+		@include breakpoint(1024px) {
+			text-align: left;
+		}//breakpoint(1024px)
+		a {	
+			color: $dark-blue;
+			&:hover {
+				color:$brand-color;
+			}
+		}//a
+	}//h2.blog-title
+
+	p {
+		text-align: center;
+		margin: 5px 0;
+		@include breakpoint(1024px) {
+			text-align: left;
+		}//breakpoint(1024px)
+	}
+}//blog-posts

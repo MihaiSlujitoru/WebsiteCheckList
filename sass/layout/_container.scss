@@ -1,0 +1,394 @@
+.content-area-services {
+	@extend .padding;
+	background-color: #eef4f4;
+
+	background-image: url('../img/our-services.jpg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+
+	.h1 {
+		color: $brand-color;
+	}
+
+	.services {
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+
+		@include breakpoint(768px) {
+			flex-direction: row;
+			justify-content: center;		
+		}//breakpoint(768px)
+		
+		.left {
+			width: 100%;
+			margin-bottom: 35px;
+			@include breakpoint(768px) {
+				width: span(6 of 12 inside no-gutters);
+				@include suffix(0.5 of 12);
+				margin-bottom: 0;
+			}//breakpoint(768px)
+		}//left
+
+		.right {
+			width: 100%;
+			@include breakpoint(768px) {
+				width: span(6 of 12 inside no-gutters);
+				@include prefix(0.5 of 12);
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+			}//breakpoint(768px)
+
+			h2,p {
+				@include breakpoint(max-width 767px) {
+					text-align: center;
+				}
+			}
+		}//right
+
+
+		.ipad {
+			margin: 0 auto;
+			max-width: 500px;
+			position: relative;
+			.ipad-img {
+				width: 100%;
+				height: auto;
+			}//ipad-img
+
+			.ipad-gif {
+				width: 100%;
+				height: auto;
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+			}//ipad-git
+		}//ipad
+
+		h2 {
+			margin: 0;
+		}//h2
+		
+	}//services
+
+}//content-area-services
+
+.content-area-process {
+	@extend .padding;
+	background-color: $white;
+	background-repeat: no-repeat;
+	background-position: center bottom;
+	//background-image: url('../img/bubbles-light-orange-section-bottom.png');
+	background-image: url('../img/bubbles-orange-section-bottom.png');
+
+
+	.h1 {
+		color: $brand-color;
+	}
+
+	.slick-slider-process {
+		margin-top: 10px;
+		margin-bottom: 100px;
+		@include breakpoint(768px) {
+			margin-top: 35px;
+		}//breakpoint(768px)
+		@include breakpoint(1024px) {
+			margin-bottom: 35px;
+		}//breakpoint(1024px)
+	}//slick-carousel-process
+	
+	.slickSlide{
+		&.slick-active {
+			.wrapper {
+				.pie,
+				.mask {
+					animation-play-state:running;
+				}//pie,mask
+			}//wrapper
+		}//active
+	}//slick-item
+
+	.slick-slider {
+		.slickSlide {
+			outline: 0;
+			padding: 0 20px;
+			.content {
+				img {
+					display: block;
+					max-width: 100%;
+					height: auto;
+				}//img
+			}//content
+		}//slick-slide
+	}//slick-slider
+
+
+	.wrapper-process {
+		.wrapper-content {
+			p {
+				margin: 20px 0;
+				text-align: center;
+				&.h3 {
+					font-weight: 900;
+					margin: 0;
+					color:$dark-blue;
+				}//h3							
+			}//p
+		}//wrapper-content
+	}//wrapper-process
+
+
+	.wrapper {
+		margin-left: auto;
+		margin-right: auto;
+		margin-bottom: 20px;
+		position: relative;
+		background-color: $accent-color;
+		border-radius: 250px;
+
+		-webkit-backface-visibility: hidden;
+		display: block;
+
+		@include breakpoint(768px) {
+			margin-bottom: 30px;
+		}
+	}//wrapper
+
+	@mixin engagement-badge($item, $duration, $size, $colour, $rotation) {
+		$animation: true;
+		// Animations are unqiue depending on the degrees the circle is filled so we need to uniquely prefix them.
+		$prefix: unique-id() + '--';
+		$spinA: null;
+		$spinB: null;
+		$time: null;
+		$curveA: null;
+		$curveB: null;
+		$border-size: $size * 0.10;
+		$arrow-size: $border-size / 2;
+
+		@if $rotation > 180 {
+			$spinA: 180deg;
+			$spinB: $rotation + deg;
+			$time: (180 / $rotation) * 100; 
+			$curveA: ease-in;
+			$curveB: ease-out;
+		} @else {
+			$spinA: ($rotation + deg);
+			$spinB: 180deg;
+			$time: 100;
+			$curveA: ease-out;
+			$curveB: linear;
+		}
+
+	  
+		#{$item} { 
+			width: $size;
+			height: $size;
+		}
+
+		#{$item} .pie {
+			width: 50%;
+			height: 100%;
+			transform-origin: 100% 50%;
+			position: absolute;
+			background: transparent;
+			border: $border-size solid #{$colour};
+			border-radius: $size;
+		}
+
+		#{$item} .spinner {
+			border-radius: 100% 0 0 100% / 50% 0 0 50%;
+			z-index: 200;
+			border-right: none;
+			@if $animation { animation: #{$prefix + rota} $duration + s $curveA 1; }
+			transform: rotate($spinA);
+			animation-play-state:paused
+		}
+	  
+		#{$item} .spinner-left {
+			border-radius: 100% 0 0 100% / 50% 0 0 50%;
+			z-index: 190;
+			border-right: none;
+			@if $animation { animation: #{$prefix + rota-left} $duration + s $curveB 1; }
+			transform: rotate($spinB);
+			animation-play-state:paused
+		}
+
+		#{$item} .mask {
+			width: 50%;
+			height: 100%;
+			position: absolute;
+			background: inherit;
+			z-index: 300;
+			border-top-left-radius: $size;
+			border-bottom-left-radius: $size;
+
+			@if $rotation >= 180 {
+				opacity: 0;
+				@if $animation { animation: #{$prefix + opa} $duration + s steps(1,end) 1; }
+			} @else {
+				opacity: 1;
+			}
+
+			animation-play-state:paused
+		}
+	  
+		#{$item} .mask-right {
+			width: 50%;
+			height: 100%;
+			position: absolute;
+			background: inherit;
+			opacity: 1;
+			z-index: 195;
+			right: 0;
+			border-top-right-radius: $size;
+			border-bottom-right-radius: $size;
+		}
+
+		@keyframes #{$prefix + rota} {
+			0% { transform: rotate(0deg); }
+			#{$time}% { transform: rotate($spinA); }
+		}
+
+		@keyframes #{$prefix + rota-left} {
+			0% { transform: rotate(180deg); }
+			#{$time}% { transform: rotate(180deg); }
+			100% { transform: rotate($spinB); }
+		}
+
+		@keyframes #{$prefix + opa} {
+			0% { opacity: 1; }
+			#{$time}%, 99% { opacity: 0; }
+		}
+
+		@keyframes #{$prefix + fill-opa} {
+			0% { opacity: 1; }
+			50% { opacity: 0; }
+		}
+	  
+	  /* MIDDLE CONTENT */
+
+	  
+		#{$item} .content {
+			background-color: $accent-color;
+			width: ($size - ($border-size * 2)) + 2;
+			height: ($size - ($border-size * 2)) + 2;
+			z-index: 1001;
+			position: absolute;
+			border-radius: $size;
+			margin: $border-size - 1;
+		}
+	}
+
+	$badge-size: 200px;
+	$speed: 1.3;
+
+	@include engagement-badge('.wrapper--high', $speed, $badge-size, #f45724, 360);
+	@include engagement-badge('.wrapper--good', $speed, $badge-size, #f45724, 270);
+	@include engagement-badge('.wrapper--sat', $speed, $badge-size, #f45724, 181);
+	@include engagement-badge('.wrapper--low', $speed, $badge-size, #f45724, 90);
+
+}//content-area-process
+
+.content-area-feed {
+	@extend .padding;
+
+	background-repeat: no-repeat;
+	background-position: center bottom;
+
+	&.content-area-blog-feed{
+		background-color: $brand-color;
+		background-image: url('../img/bubbles-gray-section-bottom.png');
+		.wrap {
+			p.text-center {
+				color:$white;
+			}//p
+		}//wrap
+	}//content-area-blog-feed
+
+	&.content-area-work-feed{
+		background-color: $accent-color;
+		//background-image: url('../img/bubbles-orange-section-bottom.png');
+		.wrap {
+			p.text-center {
+				color:$white;
+			}//p
+		}//wrap
+	}//content-area-blog-feed	
+
+
+
+	.slick-slider-examples {
+		margin-top: 10px;
+		padding-bottom: 35px;
+		@include breakpoint(768px) {
+			margin-top: 35px;
+		}//breakpoint(768px)
+		.slick-slide {
+			opacity: 0.5;
+			@include transition();
+			margin-left:0;
+			margin-right: 0;
+			@include breakpoint(768px) {
+				margin-left: 10px;
+				margin-right: 10px;
+			}//breakpoint(768px)
+		}//owl-item.active
+
+		.slick-slide.slick-active {
+			opacity: 1;
+		}
+
+		.slick-slide.slick-active + .slick-slide.slick-active + .slick-slide.slick-active {
+			opacity: 0.5
+		}//
+
+		.slick-prev {
+			@include breakpoint(max-width 767px) {
+				left: 20px;
+			}//breakpoint(max-width 767px)
+		}//slick-prev
+
+		.slick-next {
+			@include breakpoint(max-width 767px) {
+				right: 20px;
+			}//breakpoint(max-width 767px)
+		}//slick-next
+	}//slick-slider-examples
+
+
+	.read-more {
+		color:$white;
+		position: relative;
+		z-index: 30;
+		text-align: center;
+		text-transform: uppercase;
+		text-decoration: none;
+		font-weight: 900;
+		display: inline-block;
+		
+		margin-bottom: 85px;
+		&:hover {
+			color:$blue;
+		}
+		@include breakpoint(768px) {
+			margin-bottom: 65px;
+		}//breakpoint(768px)
+		@include breakpoint(1024px) {
+			margin-bottom: 40px;
+		}//breakpoint(1024px)
+		span {
+			display: none;
+			@include breakpoint(768px) {
+				display: inline-block;
+			}//breakpoint(768px)
+		}//span
+	}//read-more
+}//content-area-feed
+
+
+

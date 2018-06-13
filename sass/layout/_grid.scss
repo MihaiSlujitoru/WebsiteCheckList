@@ -1,0 +1,158 @@
+/*Add all grid options in here*/
+
+$gutter-width : 20px;
+$num-cols : 12;
+
+.wrap {
+	margin: 0 auto;
+	max-width: 1160px;
+	width: 100%;
+	padding: 0 20px;
+	@include clearfix();
+	&.short-wrap {
+		max-width: 780px;		
+	}//short-wrap
+}//wrap
+
+
+.wrap .row {
+	margin-left: (-1 * $gutter-width / 2);
+	margin-right: (-1 * $gutter-width / 2);
+}
+
+.section {
+	padding: 20px 0;
+	@include breakpoint(768px) {
+		padding: 40px 0;
+	}//breakpoint(768px)
+	@include breakpoint(60px) {
+		padding: 65px 0;
+	}//breakpoint(60px)
+
+	&.no-pad {
+		padding: 0;
+	}
+	&.no-pad-bot {
+		padding-bottom: 0;
+	}
+	&.no-pad-top {
+		padding-top: 0;
+	}
+}//section
+
+.row {
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 20px;
+	@include clearfix();
+	&.no-marg {
+		margin-bottom: 0;
+	}//no-marg
+
+	.col {
+		float: left;
+		padding: 0 $gutter-width / 2;
+		min-height: 1px;
+		&.col-pad-20 {
+			padding: 0 20px;
+		}
+
+		&[class*="push-"],
+		&[class*="pull-"] {
+			position: relative;
+		}
+
+		$i: 1;
+		@while $i <= $num-cols {
+			$perc: unquote((100 / ($num-cols / $i)) + "%");
+				&.s#{$i} {
+					width: $perc;
+					margin-left: auto;
+					left: auto;
+					right: auto;
+				}
+			$i: $i + 1;
+		}
+		$i: 1;
+		@while $i <= $num-cols {
+			$perc: unquote((100 / ($num-cols / $i)) + "%");
+			&.offset-s#{$i} {
+				margin-left: $perc;
+			}
+			&.pull-s#{$i} {
+				right: $perc;
+			}
+			&.push-s#{$i} {
+				left: $perc;
+			}
+			$i: $i + 1;
+		}
+
+		@include breakpoint(768px) {
+			$i: 1;
+			@while $i <= $num-cols {
+				$perc: unquote((100 / ($num-cols / $i)) + "%");
+					&.m#{$i} {
+						width: $perc;
+						margin-left: auto;
+						left: auto;
+						right: auto;
+					}
+				$i: $i + 1
+			}
+
+			$i: 1;
+			@while $i <= $num-cols {
+				$perc: unquote((100 / ($num-cols / $i)) + "%");
+					&.offset-m#{$i} {
+						margin-left: $perc;
+					}
+					&.pull-m#{$i} {
+						right: $perc;
+					}
+					&.push-m#{$i} {
+						left: $perc;
+					}
+				$i: $i + 1;
+			}
+		}//breakpoint(768px)
+
+
+		@include breakpoint(1024px) {
+			$i: 1;
+			@while $i <= $num-cols {
+				$perc: unquote((100 / ($num-cols / $i)) + "%");
+				&.l#{$i} {
+					width: $perc;
+					margin-left: auto;
+					left: auto;
+					right: auto;
+				}
+				$i: $i + 1;
+			}
+			$i: 1;
+			@while $i <= $num-cols {
+				$perc: unquote((100 / ($num-cols / $i)) + "%");
+					&.offset-l#{$i} {
+						margin-left: $perc;
+					}
+					&.pull-l#{$i} {
+						right: $perc;
+					}
+					&.push-l#{$i} {
+						left: $perc;
+					}
+				$i: $i + 1;
+			}	
+		}//breakpoint(1024px)
+	}//col
+}//row
+
+.padding {
+	padding-top: 50px;
+	padding-bottom: 50px;
+	@include breakpoint(1024px) {
+		padding-top: 65px;
+		padding-bottom: 65px;
+	}//breakpoint(1024px)
+}//padding

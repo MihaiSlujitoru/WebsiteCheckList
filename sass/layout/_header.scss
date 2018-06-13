@@ -1,0 +1,74 @@
+.home .site-header {
+	background: url('../img/home-page-banner.jpg');	
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+
+.site-header {
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f45724+0,f45724+21,f55d23+35,fa8f17+100 */
+	background: rgb(244,87,36); /* Old browsers */
+	background: -moz-linear-gradient(-45deg, rgba(244,87,36,1) 0%, rgba(244,87,36,1) 21%, rgba(245,93,35,1) 35%, rgba(250,143,23,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(-45deg, rgba(244,87,36,1) 0%,rgba(244,87,36,1) 21%,rgba(245,93,35,1) 35%,rgba(250,143,23,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(135deg, rgba(244,87,36,1) 0%,rgba(244,87,36,1) 21%,rgba(245,93,35,1) 35%,rgba(250,143,23,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f45724', endColorstr='#fa8f17',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */	
+
+
+	overflow: hidden;
+
+	.banner {
+		&.banner-home {
+			position: relative;
+			padding: 50px 0;
+			@include breakpoint(768px) {
+				padding: 100px 0;
+				&:after {
+					content: '';
+					background-image: url('../img/banner-bubbles.png');
+					background-repeat: no-repeat;
+					background-position: center;
+					display: block;
+					width: 291px;
+					height: 335px;
+
+					position: absolute;
+					left: 0;
+					bottom: 0;
+					z-index: 1;
+				}//after			
+			}//breakpoint(768px)
+
+			.wrap {
+				position: relative;
+				z-index: 3;
+			}
+
+			img{
+				 max-width: 100%;
+				 height: auto;
+				 margin: 0 auto 35px;
+				 display: block;
+			}
+
+			p {
+				color:$white;
+				text-align: center;
+			}
+
+		}//home
+
+		&.banner-single {
+			padding-top: 124px;
+			padding-bottom: 84px;
+			h1 {
+				margin-bottom: 0;
+			}
+		}
+
+		color:$white;
+		h3 {
+			color:$white;
+			font-weight: 400;
+		}
+	}//banner
+}//site-header
